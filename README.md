@@ -1,0 +1,2 @@
+# error
+Manages an error.
