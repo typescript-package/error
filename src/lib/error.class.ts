@@ -8,9 +8,8 @@ export class Error<Id extends string> extends CommonError<Id> {
   /**
    * Error name of a `string` type, set to `Error` that is being thrown.
    * @returns The return value is the error instance name of `string` type.
-   * @angularpackage
    */
-  public get name(): string {
+  public override get name(): string {
     return 'Error';
   }
 
@@ -18,7 +17,6 @@ export class Error<Id extends string> extends CommonError<Id> {
    * The `get` accessor, with the help of `toStringTag`, changes the default tag to `'Error'` for an instance of `Error`. It can be read
    * by the `typeOf()` function of `@angular-package/type`.
    * @returns The return value is the word `Error` of a `string`.
-   * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
     return 'Error';
@@ -35,7 +33,6 @@ export class Error<Id extends string> extends CommonError<Id> {
    * is picked from the static property `template`.
    * @returns The return value is a new instance of the `Error` with the message built from the given required `problem`, `fix` and optional
    * `id` on the `template`.
-   * @angularpackage
    */
   public static define<Id extends string>(
     problem: string,
@@ -51,9 +48,8 @@ export class Error<Id extends string> extends CommonError<Id> {
    * @param value The value of any type to check against the `Error` instance.
    * @param id Optional unique identification of generic type variable `Id` that the given `value` contains.
    * @returns The return value is a `boolean` type indicating whether the given `value` is an instance of `Error` of any or the given `id`.
-   * @angularpackage
    */
-  public static isError<Id extends string>(
+  public static override isError<Id extends string>(
     value: any,
     id?: Id
   ): value is Error<Id> {
@@ -70,7 +66,6 @@ export class Error<Id extends string> extends CommonError<Id> {
    * @param id Optional unique identification to the given `problem` of generic type variable `Id`.
    * @param template A template of error message with the replaceable `{problem}`, `{fix}` and optional `{id}` tags.
    * By default, the value is equal to the static property `template`.
-   * @angularpackage
    */
   constructor(
     problem: string,

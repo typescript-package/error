@@ -10,7 +10,6 @@ export class TypeErrors<Id extends string> extends CommonErrors<Id> {
    * Creates the `TypeErrors` instance of unique identification numbers under which the `TypeError` objects are stored.
    * @param id A rest parameter of generic type variable `Id` indicates unique identification numbers under which the `TypeError` objects
    * are stored.
-   * @angularpackage
    */
   constructor(...id: Id[]) {
     super(...id);
@@ -22,7 +21,6 @@ export class TypeErrors<Id extends string> extends CommonErrors<Id> {
    * Returns the `TypeError` instance of the given unique identification `id` if set, otherwise `undefined`.
    * @param id The unique identification number of generic type variable `ErrorId` to pick an error from the object.
    * @returns The return value is the `TypeError` instance of the given `id` if set, otherwise undefined.
-   * @angularpackage
    */
   public get<ErrorId extends Id>(id: ErrorId): TypeError<ErrorId> | undefined {
     return this.errors.get(id);
@@ -31,7 +29,6 @@ export class TypeErrors<Id extends string> extends CommonErrors<Id> {
   /**
    * The method returns the object of set type errors, where the key is a unique identification.
    * @returns The return value is an `object` of set type errors.
-   * @angularpackage
    */
   public getErrors(): { [Key in Id]: TypeError<Key> | undefined } {
     return Object.fromEntries(this.errors.entries()) as any;
@@ -48,7 +45,6 @@ export class TypeErrors<Id extends string> extends CommonErrors<Id> {
    * @param template A template of error message with the replaceable `{problem}`, `{fix}`, `{id}`, and optional `{type}` tags. By default,
    * the value is equal to the static property `RangeErrors.template`.
    * @returns The return value is an instance of `TypeErrors`.
-   * @angularpackage
    */
   public set<ErrorId extends Id>(
     problem: string,
@@ -58,7 +54,7 @@ export class TypeErrors<Id extends string> extends CommonErrors<Id> {
     template = TypeErrors.template
   ): this {
     this.isAllowedId(id) &&
-      this.errors.setHex(id, new TypeError(problem, fix, id, type, template));
+      this.errors.set(id, new TypeError(problem, fix, id, type, template));
     return this;
   }
   //#endregion instance public methods.

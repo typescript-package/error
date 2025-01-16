@@ -12,15 +12,14 @@ export class TypeError<
    * A template of the error message of `string` type with the replaceable required `{fix}`,`{problem}` and optional `{id}`, `{max}`,
    * `{min}`, `{type}` tags. By default, it's set to `Problem{id}: {problem} => Fix: {fix} must be of the {type}`.
    */
-  public static template = `Problem{id}: {problem} => Fix: {fix} must be of the {type}`;
+  public static override template = `Problem{id}: {problem} => Fix: {fix} must be of the {type}`;
 
   //#region public instance accessors.
   /**
    * The `get` accessor obtains error name of a `string` type, set to 'TypeError' that is being thrown.
    * @returns The return value is the error instance name of `string` type.
-   * @angularpackage
    */
-  public get name(): string {
+  public override get name(): string {
     return 'TypeError';
   }
 
@@ -28,7 +27,6 @@ export class TypeError<
    * The `get` accessor obtains the type of generic type variable `Type` that causes an error to be thrown(or not thrown) if set, otherwise
    * returns `undefined`.
    * @returns The return value is the type of generic type variable `Type` or `undefined`.
-   * @angularpackage
    */
   public get type(): Type | undefined {
     return this.#type;
@@ -38,7 +36,6 @@ export class TypeError<
    * The `get` accessor, with the help of `toStringTag`, changes the default tag to `'TypeError'` for an instance of
    * `TypeError`. It can be read by the `typeOf()` function of `@angular-package/type`.
    * @returns The return value is the word 'TypeError` of a `string`.
-   * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
     return 'TypeError';
@@ -61,7 +58,6 @@ export class TypeError<
    * the value is picked from the static property `TypeError.template`.
    * @returns The return value is a new instance of the `TypeError` with the message built from the given required `problem`, `fix` and
    * optional `id`, `type` on the given or stored `template`.
-   * @angularpackage
    */
   public static define<
     Id extends string,
@@ -84,7 +80,6 @@ export class TypeError<
    * given `value` contains.
    * @returns The return value is a `boolean` type indicating whether the given `value` is an instance of `TypeError` of any or the given
    * `type` and `id` properties.
-   * @angularpackage
    */
   public static isTypeError<
     Id extends string,
@@ -107,7 +102,6 @@ export class TypeError<
    * @param type The optional type of generic type variable `Type` that causes an error to be thrown(or not thrown).
    * @param template Optional template of error message with the replaceable `{problem}`, `{fix}` and optional `{id}`, `{max}`, `{min}` and
    * `{type}` tags. By default, the value is picked from the static property `TypeError.template`.
-   * @angularpackage
    */
   constructor(
     problem: string,

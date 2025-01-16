@@ -15,7 +15,6 @@ export abstract class CommonError<Id extends string> extends Error {
   /**
    * The `get` accessor obtains a possible solution to the described problem by returning the `#fix` property of a specified object.
    * @returns The return value is the fix of a `string` type.
-   * @angularpackage
    */
   public get fix(): string {
     return this.#fix;
@@ -24,7 +23,6 @@ export abstract class CommonError<Id extends string> extends Error {
   /**
    * The `get` accessor gets the error identification by returning the `#id` property of a specified object.
    * @returns The return value is the error identification of the generic type variable `Id` or `undefined`.
-   * @angularpackage
    */
   public get id(): Id | undefined {
     return this.#id;
@@ -33,7 +31,6 @@ export abstract class CommonError<Id extends string> extends Error {
   /**
    * The `get` accessor gets the link(to read more about the thrown error) by returning the `#link` property of a specified object.
    * @returns The return value is the link of a `string` type or `undefined`.
-   * @angularpackage
    */
   public get link(): string | undefined {
     return this.#link;
@@ -42,16 +39,14 @@ export abstract class CommonError<Id extends string> extends Error {
   /**
    * The `get` accessor gets the error message by returning the parent `message` property of the `Error` object.
    * @returns The return value is the error message of a `string` type.
-   * @angularpackage
    */
-  public get message(): string {
+  public override get message(): string {
     return super.message;
   }
 
   /**
    * The `get` accessor gets the problem by returning the `#problem` property of a specified object.
    * @returns The return value is the problem of a `string` type.
-   * @angularpackage
    */
   public get problem(): string {
     return this.#problem;
@@ -60,7 +55,6 @@ export abstract class CommonError<Id extends string> extends Error {
   /**
    * The `get` accessor gets the template of the error message by returning the `#template` property of a specified object.
    * @returns The return value is the template of a `string` type.
-   * @angularpackage
    */
   public get template(): string {
     return this.#template;
@@ -101,7 +95,6 @@ export abstract class CommonError<Id extends string> extends Error {
    * @param templateStringsArray -
    * @param values A rest parameter of expressions in order the `problem`, `fix`, `id`, `template` and `additional`.
    * @returns The return value is the error message of a `string` type created from the expressions given in the `values`.
-   * @angularpackage
    */
   protected static defineMessage(
     templateStringsArray: TemplateStringsArray,
@@ -129,7 +122,6 @@ export abstract class CommonError<Id extends string> extends Error {
    * @param value The value of any type to check against the `this` instance.
    * @param id Optional identification of generic type variable `Id` to check whether the given `value` contains.
    * @returns The return value is a `boolean` type indicating whether the given `value` is a `this` instance of any or the given `id`.
-   * @angularpackage
    */
   protected static isError<Id extends string>(
     value: any,
@@ -153,7 +145,6 @@ export abstract class CommonError<Id extends string> extends Error {
    * @param template A template of error message with the replaceable `{problem}`, `{fix}` and optional `{id}`, `{link}`, `{max}`, `{min}`
    * and `{type}` tags. By default, the value is equal to the static property `template`.
    * @param additional An optional object consists of optional `link`, `min`, `max`, and `type` properties to define the error message.
-   * @angularpackage
    */
   constructor(
     problem: string,

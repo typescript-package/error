@@ -13,14 +13,13 @@ export class RangeError<
    * A template of the error message of `string` type with the replaceable required `{problem}`, `{fix}` and optional `{id}`, `{max}`,
    * `{min}` tags. By default, it's set to `Problem{id}: {problem} => Fix: {fix} between {min} and {max}`.
    */
-  public static template = `Problem{id}: {problem} => Fix: {fix} between {min} and {max}`;
+  public static override template = `Problem{id}: {problem} => Fix: {fix} between {min} and {max}`;
 
   //#region public instance accessors.
   /**
    * The `get` accessor obtains the maximum range of generic type variable `Max` that causes an error to be thrown(or not thrown), if set,
    * otherwise returns `undefined`.
    * @returns The return value is the maximum range of generic type variable `Max` or `undefined`.
-   * @angularpackage
    */
   public get max(): Max | undefined {
     return this.#max;
@@ -30,7 +29,6 @@ export class RangeError<
    * The `get` accessor obtains the minimum range of generic type variable `Min` that causes an error to be thrown(or not thrown), if set,
    * otherwise returns `undefined`.
    * @returns The return value is the minimum range of generic type variable `Min` or undefined.
-   * @angularpackage
    */
   public get min(): Min | undefined {
     return this.#min;
@@ -39,9 +37,8 @@ export class RangeError<
   /**
    * The `get` accessor obtains error name of a `string` type, set to `RangeError` that is being thrown.
    * @returns The return value is the error instance name of `string` type.
-   * @angularpackage
    */
-  public get name(): string {
+  public override get name(): string {
     return 'RangeError';
   }
 
@@ -49,7 +46,6 @@ export class RangeError<
    * The `get` accessor obtains the minimum and maximum range in the form of an `object`.
    * @returns The return value is an `object` that consists of the minimum range under the `min` property and the maximum under the
    * `max` property.
-   * @angularpackage
    */
   public get range(): { min?: Min; max?: Max } {
     return {
@@ -62,7 +58,6 @@ export class RangeError<
    * The `get` accessor, with the help of `toStringTag`, changes the default tag to `'RangeError'` for an instance of
    * `RangeError`. It can be read by the `typeOf()` function of `@angular-package/type`.
    * @returns The return value is the word 'RangeError` of a `string`.
-   * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
     return 'RangeError';
@@ -94,7 +89,6 @@ export class RangeError<
    * By default, the value is picked from the static property `RangeError.template`.
    * @returns The return value is a new instance of the `RangeError` with the message built from the given required `problem`, `fix` and
    * optional `id`, `min`, `max` on the given or stored `template`.
-   * @angularpackage
    */
   public static define<
     Id extends string,
@@ -121,7 +115,6 @@ export class RangeError<
    * the given `value` contains.
    * @returns The return value is a `boolean` type indicating whether the given `value` is an instance of `RangeError` of any or the given
    * `min`, max` and `id` properties.
-   * @angularpackage
    */
   public static isRangeError<
     Id extends string,
@@ -152,7 +145,6 @@ export class RangeError<
    * @param id Optional unique identification to the given `problem` of generic type variable `Id`.
    * @param template A template of error message with the replaceable required `{problem}`, `{fix}` and optional `{id}`, `{max}`, `{min}`
    * tags. By default, the value is equal to the static property `template`.
-   * @angularpackage
    */
   constructor(
     problem: string,

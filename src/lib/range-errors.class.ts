@@ -10,7 +10,6 @@ export class RangeErrors<Id extends string> extends CommonErrors<Id> {
    * Creates the `RangeErrors` instance of unique identification numbers under which the `RangeError` objects are stored.
    * @param id A rest parameter of generic type variable `Id` indicates unique identification numbers under which the `RangeError` objects
    * are stored.
-   * @angularpackage
    */
   constructor(...id: Id[]) {
     super(...id);
@@ -22,7 +21,6 @@ export class RangeErrors<Id extends string> extends CommonErrors<Id> {
    * Returns the `RangeError` instance of the given unique identification `id` if set, otherwise `undefined`.
    * @param id The unique identification number of generic type variable `ErrorId` to pick an error from the object.
    * @returns The return value is the `RangeError` instance of the given `id` if set, otherwise undefined.
-   * @angularpackage
    */
   public get<ErrorId extends Id>(id: ErrorId): RangeError<ErrorId> | undefined {
     return this.errors.get(id);
@@ -31,7 +29,6 @@ export class RangeErrors<Id extends string> extends CommonErrors<Id> {
   /**
    * Returns the object of set range errors, where the key is a unique identification.
    * @returns The return value is an `object` of set range errors.
-   * @angularpackage
    */
   public getErrors(): { [Key in Id]: RangeError<Key> | undefined } {
     return Object.fromEntries(this.errors.entries()) as any;
@@ -49,7 +46,6 @@ export class RangeErrors<Id extends string> extends CommonErrors<Id> {
    * @param template A template of error message with the replaceable `{problem}`, `{fix}`, `{id}`, and optional `{max}`, `{min}` tags. By
    * default, the value is equal to the static property `RangeErrors.template`.
    * @returns The return value is an instance of `RangeErrors`.
-   * @angularpackage
    */
   public set<ErrorId extends Id>(
     problem: string,
@@ -60,7 +56,7 @@ export class RangeErrors<Id extends string> extends CommonErrors<Id> {
     template = RangeErrors.template
   ): this {
     this.isAllowedId(id) &&
-      this.errors.setHex(id, new RangeError(problem, fix, id, min, max, template));
+      this.errors.set(id, new RangeError(problem, fix, id, min, max, template));
     return this;
   }
   //#endregion instance public methods.

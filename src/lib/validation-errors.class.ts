@@ -10,7 +10,6 @@ export class ValidationErrors<Id extends string> extends CommonErrors<Id> {
    * Creates the `ValidationErrors` instance of unique identification numbers under which the `ValidationError` objects are stored.
    * @param id A rest parameter of generic type variable `Id` indicates unique identification numbers under which the `ValidationError`
    * objects are stored.
-   * @angularpackage
    */
   constructor(...id: Id[]) {
     super(...id);
@@ -22,7 +21,6 @@ export class ValidationErrors<Id extends string> extends CommonErrors<Id> {
    * Returns the `ValidationError` instance of the given unique identification `id` if set, otherwise `undefined`.
    * @param id The unique identification number of generic type variable `ErrorId` to pick an error from the object.
    * @returns The return value is the `ValidationError` instance of the given `id` if set, otherwise undefined.
-   * @angularpackage
    */
   public get<ErrorId extends Id>(
     id: ErrorId
@@ -33,7 +31,6 @@ export class ValidationErrors<Id extends string> extends CommonErrors<Id> {
   /**
    * Returns the object of set validation errors, where the key is a unique identification.
    * @returns The return value is an `object` of set validation errors.
-   * @angularpackage
    */
   public getErrors(): { [Key in Id]: ValidationError<Key> | undefined } {
     return Object.fromEntries(this.errors.entries()) as any;
@@ -49,7 +46,6 @@ export class ValidationErrors<Id extends string> extends CommonErrors<Id> {
    * @param template A template of error message with the replaceable `{problem}`, `{fix}`, `{id}` tags. By default, the value is equal
    * to the static property `ValidationErrors.template`.
    * @returns The return value is an instance of `Errors`.
-   * @angularpackage
    */
   public set<ErrorId extends Id>(
     problem: string,
@@ -58,7 +54,7 @@ export class ValidationErrors<Id extends string> extends CommonErrors<Id> {
     template = ValidationErrors.template
   ): this {
     this.isAllowedId(id) &&
-      this.errors.setHex(id, new ValidationError(problem, fix, id, template));
+      this.errors.set(id, new ValidationError(problem, fix, id, template));
     return this;
   }
   //#endregion instance public methods.

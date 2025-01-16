@@ -9,9 +9,8 @@ export class ValidationError<Id extends string> extends CommonError<Id> {
   /**
    * The `get` accessor obtains error name of a `string` type, set to 'ValidationError' that is being thrown.
    * @returns The return value is the error instance name of `string` type.
-   * @angularpackage
    */
-  public get name(): string {
+  public override get name(): string {
     return 'ValidationError';
   }
 
@@ -19,7 +18,6 @@ export class ValidationError<Id extends string> extends CommonError<Id> {
    * The `get` accessor, with the help of `toStringTag`, changes the default tag to `'ValidationError'` for an instance of
    * `ValidationError`. It can be read by the `typeOf()` function of `@angular-package/type`.
    * @returns The return value is the word 'ValidationError` of a `string`.
-   * @angularpackage
    */
   public get [Symbol.toStringTag](): string {
     return 'ValidationError';
@@ -37,7 +35,6 @@ export class ValidationError<Id extends string> extends CommonError<Id> {
    * is picked from the static property `ValidationError.template`.
    * @returns The return value is a new instance of the `ValidationError` with the message built from the given required `problem`, `fix`
    * and optional `id` on the given or stored `template`.
-   * @angularpackage
    */
   public static define<Id extends string>(
     problem: string,
@@ -54,7 +51,6 @@ export class ValidationError<Id extends string> extends CommonError<Id> {
    * @param id Optional unique identification of generic type variable `Id` to check whether the given `value` contains.
    * @returns The return value is a `boolean` type indicating whether the given `value` is an instance of `ValidationError` of any or the
    * supplied optional id properties.
-   * @angularpackage
    */
   public static isValidationError<Id extends string>(
     value: any,
@@ -73,7 +69,6 @@ export class ValidationError<Id extends string> extends CommonError<Id> {
    * @param id Optional unique identification to the given `problem` of generic type variable `Id`.
    * @param template Optional template of error message with the replaceable `{problem}`, `{fix}` and optional `{id}` tags. By default, the
    * value is picked from the static property `template`.
-   * @angularpackage
    */
   constructor(
     problem: string,

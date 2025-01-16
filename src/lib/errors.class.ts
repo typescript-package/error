@@ -10,7 +10,6 @@ export class Errors<Id extends string> extends CommonErrors<Id> {
    * Creates the `Errors` instance of unique identification numbers under which the `Error` objects are stored.
    * @param id A rest parameter of generic type variable `Id` indicates unique identification numbers under which the errors are stored in
    * the object.
-   * @angularpackage
    */
   constructor(...id: Id[]) {
     super(...id);
@@ -22,7 +21,6 @@ export class Errors<Id extends string> extends CommonErrors<Id> {
    * Returns the `Error` instance of the given unique identification `id` if set, otherwise `undefined`.
    * @param id The unique identification number of generic type variable `ErrorId` to pick an error from the object.
    * @returns The return value is the `Error` instance of the given `id` if set, otherwise `undefined`.
-   * @angularpackage
    */
   public get<ErrorId extends Id>(id: ErrorId): Error<ErrorId> | undefined {
     return this.errors.get(id);
@@ -31,7 +29,6 @@ export class Errors<Id extends string> extends CommonErrors<Id> {
   /**
    * Returns an `object` of set errors, where the key is a unique identification.
    * @returns The return value is an `object` of set errors.
-   * @angularpackage
    */
   public getErrors(): { [Key in Id]: Error<Key> | undefined } {
     return Object.fromEntries(this.errors.entries()) as any;
@@ -47,7 +44,6 @@ export class Errors<Id extends string> extends CommonErrors<Id> {
    * @param template A template of the error message with a replaceable `{problem}`, `{fix}`, `{id}` tags. By default, the value is equal to
    * the static property `Errors.template`.
    * @returns The return value is an instance of `Errors`.
-   * @angularpackage
    */
   public set<ErrorId extends Id>(
     problem: string,
@@ -56,7 +52,7 @@ export class Errors<Id extends string> extends CommonErrors<Id> {
     template = Errors.template
   ): this {
     this.isAllowedId(id) &&
-      this.errors.setHex(id, new Error(problem, fix, id, template));
+      this.errors.set(id, new Error(problem, fix, id, template));
     return this;
   }
   //#endregion instance public methods.
